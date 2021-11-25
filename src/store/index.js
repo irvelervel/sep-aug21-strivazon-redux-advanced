@@ -26,6 +26,8 @@ export const initialState = {
   },
   books: {
     stock: [],
+    isError: false,
+    isLoading: true,
   },
   // think about the sub-entities you want to save into the redux store
   // the cart deserves more than just an array value, let's create an object for it
