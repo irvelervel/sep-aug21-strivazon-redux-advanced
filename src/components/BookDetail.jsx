@@ -7,6 +7,7 @@ import { addToCartAction } from "../actions";
 const mapStateToProps = (state) => ({
   // this is a dummy mapStateToProps, we're writing it just to be able to declare mapDispatchToProps
   // I'm not returning any key here because my component doesn't need to read anything from the state
+  userName: state.user.name
 })
 // both these two are ALWAYS functions returning a single object
 const mapDispatchToProps = (dispatch) => ({
@@ -57,9 +58,13 @@ class BookDetail extends Component {
                   <span className="font-weight-bold">Price:</span>
                   {this.state.book.price}
                 </p>
-                <Button color="primary" onClick={() => this.props.addToCart(this.state.book)}>
-                  ADD TO CART
-                </Button>
+                {
+                  this.props.userName ? (
+                    <Button color="primary" onClick={() => this.props.addToCart(this.state.book)}>
+                      ADD TO CART
+                    </Button>
+                  ) : <p>Log in to add this item to your cart!</p>
+                }
               </Col>
             </Row>
           </>

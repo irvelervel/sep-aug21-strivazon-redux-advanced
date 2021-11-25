@@ -10,6 +10,9 @@ export const initialState = {
   cart: {
     content: [],
   },
+  user: {
+    name: '',
+  },
   // think about the sub-entities you want to save into the redux store
   // the cart deserves more than just an array value, let's create an object for it
   // so if your structure expands in the future you can put into it all the cart-related

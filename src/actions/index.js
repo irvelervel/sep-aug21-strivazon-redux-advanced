@@ -1,5 +1,6 @@
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 export const ADD_TO_CART = 'ADD_TO_CART'
+export const SET_USERNAME = 'SET_USERNAME'
 
 // in this file we're going to export our actions
 // what
@@ -19,3 +20,8 @@ export const removeFromCartAction = (indexToRemove) => ({
   payload: indexToRemove,
 })
 // the function returns an object, so you can dispatch it INSTEAD of dispatching the object
+
+export const setUsernameAction = (name) => ({
+  type: SET_USERNAME,
+  payload: name, // <- this is the content of the input field in CartIndicator!
+})

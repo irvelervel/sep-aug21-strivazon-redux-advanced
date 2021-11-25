@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from '../actions'
+import { ADD_TO_CART, REMOVE_FROM_CART, SET_USERNAME } from '../actions'
 import { initialState } from '../store'
 
 // the reducer's job is ALWAYS to return a valid state for the application
@@ -27,6 +27,14 @@ const mainReducer = (state = initialState, action) => {
           content: state.cart.content.filter((el, i) => i !== action.payload), // <- it works!
           //   content: [...state.cart.content.slice(0, action.payload), ...state.cart.content.slice(action.payload + 1)],
           // this also works, slightly more complex... :)
+        },
+      }
+    case SET_USERNAME:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          name: action.payload,
         },
       }
     default:
