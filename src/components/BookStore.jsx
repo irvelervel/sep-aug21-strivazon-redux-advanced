@@ -10,19 +10,19 @@ class BookStore extends Component {
   };
 
   componentDidMount = async () => {
-    try {
-      let resp = await fetch(
-        "https://striveschool-api.herokuapp.com/food-books"
-      );
-      if (resp.ok) {
-        let books = await resp.json();
-        this.setState({ books });
-      } else {
-        console.log("error");
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    // try {
+    //   let resp = await fetch(
+    //     "https://striveschool-api.herokuapp.com/food-books"
+    //   );
+    //   if (resp.ok) {
+    //     let books = await resp.json();
+    //     this.setState({ books });
+    //   } else {
+    //     console.log("error");
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   changeBook = (book) => this.setState({ bookSelected: book });

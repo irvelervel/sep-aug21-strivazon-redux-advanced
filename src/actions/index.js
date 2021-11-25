@@ -25,3 +25,37 @@ export const setUsernameAction = (name) => ({
   type: SET_USERNAME,
   payload: name, // <- this is the content of the input field in CartIndicator!
 })
+
+// EXPLANATION:
+// if you have redux-thunk injected in the flow, you can do more with your action creators.
+// with redux thunk you can return out of them not just simple actions, but FUNCTIONS.
+// and these functions can be even ASYNC, so you can do even FETCHES inside of them!
+
+export const getBooksAction = () => {
+  return async (dispatch) => {
+    // if you're trying to dispatch something that is NOT an action WITHOUT thunk
+    // everything will crash!
+    // BUT if you have redux-thunk in the flow, the function you'll eventually dispatch
+    // is going to be given by redux-thunk a DISPATCH function as the first argument
+    console.log('Hello! this is a thunk action creator')
+    // ...you can do whatever you want here
+    // let's do a fetch!
+    try {
+      const response = await fetch('https://striveschool-api.herokuapp.com/food-books')
+      if (response.ok) {
+        const data = await response.json()
+        console.log(data)
+        // now it's time do to the dispatch
+        dispatch({
+          type: 'GET_BOOKS',
+          payload: data,
+        })
+      } else {
+        console.log('Houston, we got an error :(')
+        // we can also dispatch ANOTHER action here for the error!
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
