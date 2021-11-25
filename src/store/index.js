@@ -1,5 +1,6 @@
-import { createStore } from 'redux'
-import mainReducer from '../reducers'
+import { createStore, combineReducers } from 'redux'
+import cartReducer from '../reducers/cart'
+import userReducer from '../reducers/user'
 
 // my suggestion to start is to think as the FIRST THING about your STORE SHAPE
 // I'm planning to use the redux store for sharing the CART and also give to the store
@@ -19,8 +20,13 @@ export const initialState = {
   // properties
 }
 
+const bigReducer = combineReducers({
+  cart: cartReducer,
+  user: userReducer,
+})
+
 const configureStore = createStore(
-  mainReducer,
+  bigReducer,
   initialState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
